@@ -128,6 +128,14 @@ Movie Title ERROR: the matrix is wrong
 
 ---
 
-## Author
+## Authors
 
-Software Testing Project – 2026
+- Ammar Abdelghany
+- Ali Abdelmaboud
+- Basil Sherif
+- Amr Emad
+- Islam el demerdash 
+
+## Course
+Software Testing – Spring 2026  
+Faculty of Engineering – Ain Shams University
