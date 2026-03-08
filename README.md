@@ -57,7 +57,7 @@ category1,category2,...
 Example:
 
 ```
-The Matrix,MATRIX001
+The Matrix,TM013
 action,sci-fi
 ```
 
@@ -87,8 +87,7 @@ Example output:
 
 ```
 For User: John Smith,12345678A
-{action}: MATRIX001-The Matrix
-{drama}: MOV123-The Godfather
+{action}: TM013-The Matrix
 ```
 
 ---
@@ -130,12 +129,13 @@ Movie Title ERROR: the matrix is wrong
 
 ## Authors
 
-- Ammar Abdelghany
-- Ali Abdelmaboud
-- Basil Sherif
-- Amr Emad
-- Islam el demerdash 
+* Ammar Abdelghany
+* Ali Abdelmaboud
+* Basil Sherif
+* Amr Emad
+* Islam El Demerdash
 
 ## Course
-Software Testing – Spring 2026  
+
+Software Testing – Spring 2026
 Faculty of Engineering – Ain Shams University
