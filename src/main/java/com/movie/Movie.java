@@ -1,3 +1,5 @@
+package com.movie;
+
 import java.util.List;
 
 public class Movie {

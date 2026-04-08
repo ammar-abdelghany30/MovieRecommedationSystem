@@ -1,3 +1,5 @@
+package com.movie;
+
 import java.util.*;
 
 public class RecommendationEngine {
@@ -6,7 +8,7 @@ public class RecommendationEngine {
         StringBuilder sb = new StringBuilder();
 
         for (User user : users) {
-            sb.append("For User: ").append(user.getUsername())
+            sb.append("For com.movie.User: ").append(user.getUsername())
                     .append(", ").append(user.getId()).append("\n");
 
             for (String category : user.getLikedCategories()) {

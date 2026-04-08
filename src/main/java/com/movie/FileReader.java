@@ -1,3 +1,5 @@
+package com.movie;
+
 import java.io.*;
 import java.util.*;
 
@@ -17,19 +19,19 @@ public class FileReader {
             // Validate title
             if (!Validator.isValidMovieTitle(title)) {
                 br.close();
-                throw new Exception("Movie Title ERROR: " + title + " is wrong");
+                throw new Exception("com.movie.Movie Title ERROR: " + title + " is wrong");
             }
 
             // Validate ID letters
             if (!Validator.isValidMovieIdLetters(title, id)) {
                 br.close();
-                throw new Exception("Movie Id letters ERROR: " + id + " are wrong");
+                throw new Exception("com.movie.Movie Id letters ERROR: " + id + " are wrong");
             }
 
             // Validate ID numbers
             if (!Validator.isValidMovieIdNumbers(id)) {
                 br.close();
-                throw new Exception("Movie Id numbers ERROR: " + id + " aren't unique");
+                throw new Exception("com.movie.Movie Id numbers ERROR: " + id + " aren't unique");
             }
 
             // Line 2: categories
@@ -64,7 +66,7 @@ public class FileReader {
 
             if (!Validator.isValidUserId(userId) || seenIds.contains(userId)) {
                 br.close();
-                throw new Exception("User Id ERROR: " + userId + " is wrong");
+                throw new Exception("com.movie.User Id ERROR: " + userId + " is wrong");
             }
 
             seenIds.add(userId);
