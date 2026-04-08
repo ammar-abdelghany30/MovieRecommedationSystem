@@ -1,8 +1,8 @@
-# Movie Recommendation System
+# com.movie.Movie Recommendation System
 
 ## Overview
 
-The **Movie Recommendation System** is a Java-based application that reads movie and user data from input files, validates the information according to predefined rules, and generates movie recommendations for each user based on their preferred categories.
+The **com.movie.Movie Recommendation System** is a Java-based application that reads movie and user data from input files, validates the information according to predefined rules, and generates movie recommendations for each user based on their preferred categories.
 
 The system performs strict validation and stops execution immediately if any input error is detected, reporting only the first encountered error.
 
@@ -27,12 +27,12 @@ MovieRecommendationSystem
 ├── src
 │   └── main
 │       ├── java
-│       │   ├── Main.java
-│       │   ├── Movie.java
-│       │   ├── User.java
+│       │   ├── com.movie.Main.java
+│       │   ├── com.movie.Movie.java
+│       │   ├── com.movie.User.java
 │       │   ├── Validator.java
-│       │   ├── FileReader.java
-│       │   └── RecommendationEngine.java
+│       │   ├── com.movie.FileReader.java
+│       │   └── com.movie.RecommendationEngine.java
 │       │
 │       └── resources
 │           ├── movies.txt
@@ -50,7 +50,7 @@ MovieRecommendationSystem
 ### movies.txt
 
 ```
-Movie Title,MovieID
+com.movie.Movie Title,MovieID
 category1,category2,...
 ```
 
@@ -86,7 +86,7 @@ action,drama
 Example output:
 
 ```
-For User: John Smith,12345678A
+For com.movie.User: John Smith,12345678A
 {action}: TM013-The Matrix
 ```
 
@@ -94,15 +94,15 @@ For User: John Smith,12345678A
 
 ## Validation Rules
 
-### Movie Data
+### com.movie.Movie Data
 
-* Movie Title: Every word must start with a capital letter.
-* Movie ID: Must contain uppercase letters followed by three digits.
+* com.movie.Movie Title: Every word must start with a capital letter.
+* com.movie.Movie ID: Must contain uppercase letters followed by three digits.
 
-### User Data
+### com.movie.User Data
 
 * Username: Alphabetic characters and spaces only and must not start with a space.
-* User ID: Exactly 9 characters starting with numbers and optionally ending with one alphabetic character.
+* com.movie.User ID: Exactly 9 characters starting with numbers and optionally ending with one alphabetic character.
 
 ---
 
@@ -113,7 +113,7 @@ If any validation rule fails, the system stops immediately and writes the first 
 Example:
 
 ```
-Movie Title ERROR: the matrix is wrong
+com.movie.Movie Title ERROR: the matrix is wrong
 ```
 
 ---

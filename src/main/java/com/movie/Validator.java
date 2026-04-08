@@ -1,6 +1,8 @@
+package com.movie;
 import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
+
 
 public class Validator {
 
@@ -8,7 +10,7 @@ public class Validator {
             List.of("horror", "action", "drama", "comedy", "thriller", "romance", "sci-fi")
     );
 
-    // Movie title: every word must start with a capital letter
+    // com.movie.Movie title: every word must start with a capital letter
     public static boolean isValidMovieTitle(String title) {
         if (title == null || title.isEmpty()) return false;
         String[] words = title.split(" ");
@@ -18,7 +20,7 @@ public class Validator {
         return true;
     }
 
-    // Movie ID: capital letters from title + 3 unique digits
+    // com.movie.Movie ID: capital letters from title + 3 unique digits
     public static boolean isValidMovieIdLetters(String title, String id) {
         // Extract capital letters from title (first letter of each word)
         StringBuilder expected = new StringBuilder();
@@ -51,7 +53,7 @@ public class Validator {
         return username.matches("[a-zA-Z ]+");
     }
 
-    // User ID: alphanumeric, exactly 9 chars, starts with numbers, at most one letter at end
+    // com.movie.User ID: alphanumeric, exactly 9 chars, starts with numbers, at most one letter at end
     public static boolean isValidUserId(String userId) {
         if (userId == null || userId.length() != 9) return false;
         if (!userId.matches("[a-zA-Z0-9]+")) return false;
