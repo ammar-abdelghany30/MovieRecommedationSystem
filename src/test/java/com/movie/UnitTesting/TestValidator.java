@@ -191,4 +191,175 @@ public class TestValidator {
         assertTrue(Validator.isValidMovieIdLetters(
                 "Harry Potter And The Goblet", "HPATG123"));
     }
+    // TC-N01 : Valid case
+    @Test
+    void unique_movieID()
+    {
+        assertTrue(Validator.isValidMovieIdNumbers("HPATG123"));
+    }
+    // TC-N02 : Valid case
+    @Test
+    void unique_movieID2()
+    {
+        assertTrue(Validator.isValidMovieIdNumbers("BIB580"));
+    }
+    // TC-N03 : INValid case (not unique)
+    @Test
+    void non_unique_movieID1()
+    {
+        assertFalse(Validator.isValidMovieIdNumbers("TR588"));
+    }
+    // TC-N04 : INValid case (not unique)
+    @Test
+    void non_unique_allsame_movieID()
+    {
+        assertFalse(Validator.isValidMovieIdNumbers("TR888"));
+    }
+    // TC-N05 : INValid case (not unique)
+    @Test
+    void non_unique_movieID3()
+    {
+        assertFalse(Validator.isValidMovieIdNumbers("TR858"));
+    }
+
+    // TC-N06 : INValid case (not 3 digits)
+    @Test
+    void four_digits_movieID()
+    {
+        assertFalse(Validator.isValidMovieIdNumbers("KKR1235"));
+    }
+    // TC-N07 : INValid case (not 3 digits)
+    @Test
+    void two_digits_movieID()
+    {
+        assertFalse(Validator.isValidMovieIdNumbers("KKR67"));
+    }
+    // TC-N08 : INValid case (not 3 digits)
+    @Test
+    void zero_digits_movieID()
+    {
+        assertFalse(Validator.isValidMovieIdNumbers("KKR"));
+    }
+    // TC-N09 : edge cases
+    // bug -> assert false failed
+    @Test
+    void three_digits_accrossID()
+    {
+        assertFalse(Validator.isValidMovieIdNumbers("KK1R35"));
+    }
+    // TC-N10 : edge case
+    @Test
+    void empty_string()
+    {
+        assertFalse(Validator.isValidMovieIdNumbers(""));
+    }
+    // TC-N11 : edge case
+    // bug -> same issue
+    @Test
+    void numbers_before_letters()
+    {
+        assertFalse(Validator.isValidMovieIdNumbers("123KKR"));
+    }
+
+    // TC-C01: Valid category - horror
+    @Test
+    void testValidCategory_Horror() {
+
+        assertTrue(Validator.isValidCategory("horror"));
+    }
+
+    // TC-C02: Valid category - action
+    @Test
+    void testValidCategory_Action() {
+
+        assertTrue(Validator.isValidCategory("action"));
+    }
+
+    // TC-C03: Valid category - drama
+    @Test
+    void testValidCategory_Drama() {
+        assertTrue(Validator.isValidCategory("drama"));
+    }
+
+    // TC-C04: Valid category - comedy
+    @Test
+    void testValidCategory_Comedy() {
+        assertTrue(Validator.isValidCategory("comedy"));
+    }
+
+    // TC-C05: Valid category - thriller
+    @Test
+    void testValidCategory_Thriller() {
+        assertTrue(Validator.isValidCategory("thriller"));
+    }
+
+    // TC-C06: Valid category - romance
+    @Test
+    void testValidCategory_Romance() {
+        assertTrue(Validator.isValidCategory("romance"));
+    }
+
+    // TC-C07: Valid category - sci-fi
+    @Test
+    void testValidCategory_SciFi() {
+        assertTrue(Validator.isValidCategory("sci-fi"));
+    }
+    // TC-C08: Valid category with trimmed and lowercase options
+    @Test
+    void testValidCategoryTrimmed() {
+        assertTrue(Validator.isValidCategory(" comedy "));
+    }
+    // TC-C09: Valid category with trimmed and lowercase options
+    @Test
+    void testValidCategoryUppercase1() {
+        assertTrue(Validator.isValidCategory(" COMEDY "));
+    }
+    // TC-C10: Valid category with trimmed and lowercase options
+    @Test
+    void testValidCategoryUppercase2() {
+        assertTrue(Validator.isValidCategory("Comedy"));
+    }
+    // TC-C11: Invalid category - fantasy not in allowed list
+    @Test
+    void test_inValidCategory_Fantasy() {
+
+        assertFalse(Validator.isValidCategory("fantasy"), "fantasy should not be a valid category");
+    }
+
+    // TC-C12: Invalid category - cartoon not in allowed list
+    @Test
+    void test_inValidCategory_Cartoon() {
+        assertFalse(Validator.isValidCategory("Cartoon"), "cartoon should not be a valid category");
+    }
+
+    // TC-C13: Empty string - not in list
+    @Test
+    void test_inValidCategory_EmptyString() {
+        // Arrange
+        String category = "";
+        // Act
+        boolean result = Validator.isValidCategory(category);
+        // Assert
+        assertFalse(result, "empty string should not be a valid category");
+    }
+
+    // TC-C14: Null input -> Bug: program crash here instead of returning false
+    @Test
+    void testValidCategory_NullInput_ReturnsFalse() {
+        assertFalse(Validator.isValidCategory(null),"Null input should return false not crash");
+    }
+
+    // TC-C15: "sci fi" without hyphen - different from "sci-fi"
+    @Test
+    void test_inValidCategory_SciFiWithoutHyphen() {
+        // Arrange
+        String category = "sci fi";
+        // Act
+        boolean result = Validator.isValidCategory(category);
+        // Assert
+        assertFalse(result, "sci fi without hyphen should not be a valid category");
+    }
+
 }
+
+
