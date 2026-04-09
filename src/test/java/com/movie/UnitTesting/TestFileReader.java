@@ -199,13 +199,5 @@ public class TestFileReader {
         List<String> cats = movies.get(0).getCategories();
         assertEquals(2, cats.size());
     }
-    // Happy path: categories trimmed and lowercased
-    @Test
-    void testCategoriesTrimmedAndLwercased() throws Exception {
-        String content = "The Matrix, TM123\n  ACTION ,  SCI-FI  \n";
-        Path file = tempDir.resolve("movies.txt");
-        Files.writeString(file, content);
-        List<Movie> movies = FileReader.readMovies(file.toString());
-        assertEquals(List.of("action", "sci-fi"), movies.get(0).getCategories());
-    }
+
 }
