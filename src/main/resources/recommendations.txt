@@ -1,5 +1,2 @@
-For com.movie.User: John Smith, 12345678A
-{action}:TM013-The Matrix
-{drama}:
-For com.movie.User: Ammar Mohamed, 87654321k
-{comedy}:LTWE259-La Trag3 Wala Esteslam
+For User: John Smith, 12345678A
+{action}:TM123-The Matrix
