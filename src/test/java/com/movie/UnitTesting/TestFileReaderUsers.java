@@ -872,7 +872,7 @@ public class TestFileReaderUsers {
         Files.writeString(file, content);
         Exception ex = assertThrows(Exception.class,
                 () -> FileReader.readUsers(file.toString()));
-        assertTrue(ex.getMessage().contains("User Id ERROR"));
+        assertTrue(ex.getMessage().contains("User I ERROR"));
     }
 
 }
