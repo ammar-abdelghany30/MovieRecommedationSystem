@@ -1,4 +1,2 @@
-John Smith,12345678A
-action,drama
-Ammar Mohamed,87654321k
-comedy
+John Smith ,12345678A
+action
