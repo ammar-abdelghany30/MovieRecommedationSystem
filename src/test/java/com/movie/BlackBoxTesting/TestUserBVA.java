@@ -1,4 +1,4 @@
-package com.movie.UnitTesting;
+package com.movie.BlackBoxTesting;
 
 import com.movie.Validator;
 import org.junit.jupiter.api.Test;

@@ -1,2 +1,2 @@
-John Smith ,12345678A
-action
+John Smith,12345678A
+drama
