@@ -302,10 +302,13 @@ public class TestFileReaderUsers {
         assertTrue(ex.getMessage().contains("User Id ERROR"));
     }
 
-    // Error: empty user ID -> User Id ERROR
+    // Error: empty user ID (single-space ID trims to empty) -> User Id ERROR
+    // Note: "John Smith,\n" causes split(",") to drop the trailing empty token.
+    //       A single space " " is used so split keeps it; after .trim() it becomes "",
+    //       which has length 0 != 9, so isValidUserId() returns false -> User Id ERROR.
     @Test
     void testEmptyUserId_throwsError() throws Exception {
-        String content = "John Smith,\naction\n";
+        String content = "John Smith, \naction\n";
         Path file = tempDir.resolve("users.txt");
         Files.writeString(file, content);
         Exception ex = assertThrows(Exception.class, () -> FileReader.readUsers(file.toString()));
@@ -872,7 +875,7 @@ public class TestFileReaderUsers {
         Files.writeString(file, content);
         Exception ex = assertThrows(Exception.class,
                 () -> FileReader.readUsers(file.toString()));
-        assertTrue(ex.getMessage().contains("User I ERROR"));
+        assertTrue(ex.getMessage().contains("User Id ERROR"));
     }
 
 }
