@@ -36,7 +36,7 @@ public class TestRecommendationEngine {
         assertTrue(result.contains("TM123-The Matrix"));
     }
 
-    // TC-RE02: User likes category with no matching movie
+    // TC-RE02: User likes category with no matching movie (consider a bug)
     @Test
     void userLikesCategoryWithNoMatch() {
         // Arrange
@@ -177,7 +177,7 @@ public class TestRecommendationEngine {
     // SCENARIO 4 — Edge Cases
     // =========================================================
 
-    // TC-RE10: Empty movies list — user block generated but categories empty
+    // TC-RE10: Empty movies list — user block generated but categories empty (bug)
     @Test
     void emptyMoviesList() {
         // Arrange
