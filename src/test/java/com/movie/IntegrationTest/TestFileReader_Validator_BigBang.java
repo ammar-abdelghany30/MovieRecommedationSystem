@@ -1,4 +1,4 @@
-package com.movie.UnitTesting;
+package com.movie.IntegrationTest;
 
 import com.movie.FileReader;
 import com.movie.Movie;
@@ -10,7 +10,7 @@ import java.nio.file.Files;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TestFileReader {
+public class TestFileReader_Validator_BigBang {
 
     @TempDir
     Path tempDir;
