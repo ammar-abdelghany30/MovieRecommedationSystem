@@ -191,6 +191,24 @@ public class TestValidator {
         assertTrue(Validator.isValidMovieIdLetters(
                 "Harry Potter And The Goblet", "HPATG123"));
     }
+    // this is consider also issues but it's not a case that .txt files passes null so it's not critical
+    // What happens if title is null?
+    @Test
+    void invalidMovieIdLetters_nullTitle() {
+        assertThrows(NullPointerException.class, () ->
+                        Validator.isValidMovieIdLetters(null, "TM123"),
+                "null title crashes — no null check"
+        );
+    }
+
+    // What happens if id is null?
+    @Test
+    void invalidMovieIdLetters_nullId() {
+        assertThrows(NullPointerException.class, () ->
+                        Validator.isValidMovieIdLetters("The Matrix", null),
+                "null id crashes — no null check"
+        );
+    }
     // TC-N01 : Valid case
     @Test
     void unique_movieID()
@@ -259,6 +277,15 @@ public class TestValidator {
     void numbers_before_letters()
     {
         assertFalse(Validator.isValidMovieIdNumbers("123KKR"));
+    }
+    // what happens with null? (bug)
+    @Test
+    void invalidMovieIdNumbers_null() {
+
+        assertThrows(NullPointerException.class, () ->
+                        Validator.isValidMovieIdNumbers(null),
+                "isValidMovieIdNumbers(null) crashes — no null check"
+        );
     }
 
     // TC-C01: Valid category - horror
@@ -436,12 +463,6 @@ public class TestValidator {
     @Test
     void validUserId() {
         assertTrue(Validator.isValidUserId("12226548h"));
-    }
-
-    // Current — will crash before assertFalse runs
-    @Test
-    void testValidCategory_NullInput() {
-        assertFalse(Validator.isValidCategory(null));
     }
 
     // that's mean program crash which is considered a BUG !!

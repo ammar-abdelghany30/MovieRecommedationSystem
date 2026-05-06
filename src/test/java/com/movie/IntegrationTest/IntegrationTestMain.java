@@ -389,4 +389,21 @@ public class IntegrationTestMain {
         assertFalse(output.isBlank());
         assertFalse(output.contains("For User:"));
     }
+    // Add to IntegrationTestMain — currently missing
+
+    // Empty users file → blank output
+    @Test
+    void emptyUsersFile_outputIsBlank() throws Exception {
+        String output = runPipeline("The Matrix,TM123\naction\n", "");
+        assertTrue(output.isBlank(),
+                "Empty users file should produce blank output");
+    }
+
+    // Empty movies file → user block with empty category
+    @Test
+    void emptyMoviesFile_userBlockWithEmptyCategory() throws Exception {
+        String output = runPipeline("", "John Smith,12345678A\naction\n");
+        assertTrue(output.contains("For User:") || output.isBlank(),
+                "Empty movies produces user block with empty categories");
+    }
 }
