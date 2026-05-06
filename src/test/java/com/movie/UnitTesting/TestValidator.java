@@ -360,6 +360,97 @@ public class TestValidator {
         assertFalse(result, "sci fi without hyphen should not be a valid category");
     }
 
-}
+// ===============================================================
+// Testing Valid user data
+// ===============================================================
 
+    @Test
+    void validUsername() {
+        assertTrue(Validator.isValidUsername("John Smith"));
+    }
+
+    @Test
+    void invalidUsername_startsWithSpace() {
+        assertFalse(Validator.isValidUsername(" John"));
+    }
+
+    @Test
+    void invalidUsername_containsDigit() {
+        assertFalse(Validator.isValidUsername("John2"));
+    }
+
+    @Test
+    void invalidUsername_null() {
+        assertFalse(Validator.isValidUsername(null));
+    }
+
+    @Test
+    void invalidUsername_empty() {
+        assertFalse(Validator.isValidUsername(""));
+    }
+
+    @Test
+    void invalidUsername_specialChar() {
+        assertFalse(Validator.isValidUsername("John@Smith"));
+    }
+
+    @Test
+    void validUserId_allDigits() {
+        assertTrue(Validator.isValidUserId("123456789"));
+    }
+
+    @Test
+    void validUserId_oneLetterAtEnd() {
+        assertTrue(Validator.isValidUserId("12345678A"));
+    }
+
+    @Test
+    void invalidUserId_tooShort() {
+        assertFalse(Validator.isValidUserId("12345678"));
+    }
+
+    @Test
+    void invalidUserId_tooLong() {
+        assertFalse(Validator.isValidUserId("1234567890"));
+    }
+
+    @Test
+    void invalidUserId_startsWithLetter() {
+        assertFalse(Validator.isValidUserId("A12345678"));
+    }
+
+    @Test
+    void invalidUserId_twoLettersAtEnd() {
+        assertFalse(Validator.isValidUserId("1234567AB"));
+    }
+
+    @Test
+    void invalidUserId_letterInMiddle() {
+        assertFalse(Validator.isValidUserId("1234A5678"));
+    }
+
+    @Test
+    void invalidUserId_null() {
+        assertFalse(Validator.isValidUserId(null));
+    }
+    @Test
+    void validUserId() {
+        assertTrue(Validator.isValidUserId("12226548h"));
+    }
+
+    // Current — will crash before assertFalse runs
+    @Test
+    void testValidCategory_NullInput() {
+        assertFalse(Validator.isValidCategory(null));
+    }
+
+    // that's mean program crash which is considered a BUG !!
+    @Test
+    void testValidCategory_nullInput_ReturnsFalse() {
+        assertThrows(NullPointerException.class, () ->
+                        Validator.isValidCategory(null),
+                "isValidCategory(null) should not crash — bug confirmed"
+        );
+    }
+}
 
