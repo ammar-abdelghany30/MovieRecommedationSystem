@@ -1,4 +1,4 @@
-# com.movie.Movie Recommendation System
+# Movie Recommendation System
 
 ## Overview
 
