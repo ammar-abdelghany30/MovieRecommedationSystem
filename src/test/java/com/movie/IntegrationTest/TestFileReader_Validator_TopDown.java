@@ -41,24 +41,19 @@ class FileReaderIsolatedTest {
     }
 
     @Test
-    void testReadMovies_CategoryParsing_EvenIfValidatorFails() throws Exception {
-        // This tests FileReader's line splitting logic regardless of validation
+    void testReadMovies_ThrowsException_WhenValidatorFailsOnTitle() throws Exception {
         Path file = Files.createTempFile("movies", ".txt");
-        Files.writeString(file, "Bad Title, BAD123\n  ACTION ,  COMEDY  \n");
+        Files.writeString(file, "Wrong Title, ANY123\naction,sci-fi\n");
 
         try (MockedStatic<Validator> validatorMock = mockStatic(Validator.class)) {
-            // Simulate validation failing after parsing – but parsing itself must work
             validatorMock.when(() -> Validator.isValidMovieTitle(anyString())).thenReturn(false);
-            // We want to see that the exception thrown contains the validation error,
-            // but the categories line was still read. Not directly testable because exception aborts.
-            // Better: test that if validation passes, categories are trimmed and lowercased correctly.
-            validatorMock.when(() -> Validator.isValidMovieTitle(anyString())).thenReturn(true);
             validatorMock.when(() -> Validator.isValidMovieIdLetters(anyString(), anyString())).thenReturn(true);
             validatorMock.when(() -> Validator.isValidMovieIdNumbers(anyString())).thenReturn(true);
 
-            List<Movie> movies = FileReader.readMovies(file.toString());
-            assertEquals(List.of("action", "comedy"), movies.get(0).getCategories());
+            Exception ex = assertThrows(Exception.class, () -> FileReader.readMovies(file.toString()));
+            assertTrue(ex.getMessage().contains("Movie Title ERROR"));
         }
+
         Files.deleteIfExists(file);
     }
 
